@@ -1,8 +1,4 @@
 #include <iostream>
-#include <Eigen/Dense>
-
-typedef Eigen::Matrix<float, 4, 4> Matrix44i;
-typedef Eigen::Vector<float, 4> vec4f;
 
 void test_eigen() {
   Matrix44i m1;
