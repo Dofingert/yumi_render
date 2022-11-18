@@ -16,7 +16,7 @@ int VertexBank::clear() {
   return 0;
 }
 
-VertexSlot *VertexBank::get(int id) {
+const VertexSlot *VertexBank::get(int id) const {
   if (id < 0 || id >= size) {
 	return nullptr;
   }

@@ -7,7 +7,7 @@
 
 #include "render_type.h"
 
-#define VERTEX_BUF_SIZE 128
+#define VERTEX_BUF_SIZE (128)
 
 struct flag_t {
   unsigned char master_matrix_id: 8;
@@ -32,9 +32,10 @@ struct VertexSlot {
 class VertexBank {
   int size = 0;
   VertexSlot slot[VERTEX_BUF_SIZE];
+ public:
   int push(const VertexSlot &input_ref);
   int clear();
-  VertexSlot *get(int id);
+  const VertexSlot *get(int id) const;
 };
 
 #endif //SOFTWARE_RASTERIZER_HEADER_VERTEX_BANK_H_

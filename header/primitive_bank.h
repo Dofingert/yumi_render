@@ -19,7 +19,8 @@ struct Primitive {
   vec3f pos[3];
   vec3f normal[3];
   vec2s uv[3];
-}; // 21 Word= 84 bytes
+  unsigned int special_flag; // Used for set primitive_color directly without uv.
+}; // 22 Word= 88 bytes
 
 class PrimitiveFifo {
   unsigned int fifo_head;
@@ -29,7 +30,7 @@ class PrimitiveFifo {
   std::condition_variable cond_consumer;
   Primitive slot[PRIMITIVE_FIFO_SIZE];
   unsigned int fifo_end;
-
+ public:
   int push(const Primitive &input_ref);
   void kill(); // Called by push side.
   int pop(Primitive *target_buf);
