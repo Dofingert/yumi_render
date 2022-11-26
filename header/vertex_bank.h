@@ -38,4 +38,6 @@ class VertexBank {
   const VertexSlot *get(int id) const;
 };
 
+void vertex_transform_controller(int bank_id, int vertex_num, VertexSlot *input_ptr);
+
 #endif //SOFTWARE_RASTERIZER_HEADER_VERTEX_BANK_H_

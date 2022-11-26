@@ -97,8 +97,8 @@ void primitive_dispatcher_controller() {
   while (true) {
 	int ret = primitive_fifo.pop(&handling_primitive);
 	if (ret != 0) {
-	  for (int dx = 0; dx < PIXEL_SHADER_BANK_W_N) {
-		for (int dy = 0; dy < PIXEL_SHADER_BANK_H_N) {
+	  for (int dx = 0; dx < PIXEL_SHADER_BANK_W_N; dx++) {
+		for (int dy = 0; dy < PIXEL_SHADER_BANK_H_N; dy++) {
 		  pixel_shader_fifo[dx][dy].kill();
 		}
 	  }

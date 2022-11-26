@@ -1,11 +1,10 @@
+#include <cstdio>
 #include <iostream>
 #include <sg14/fixed_point>
 #include "header/render_type.h"
+#include "header/utils.h"
 
-int screen_size_w = 512;
-int screen_size_h = 512;
-uint32_t frame_buffer[512][512];
-uint16_t tex[512][512];
+extern uint32_t *frame_buffer;
 
 void test_eigen() {
   matrix44f m1;
@@ -33,7 +32,13 @@ void test_fixpoint() {
 }
 
 int main() {
-  test_eigen();
-  test_fixpoint();
+//  test_eigen();
+//  test_fixpoint();
+  frame_buffer = (uint32_t *)calloc(1, 512 * 512 * 4);
+  single_thread_render_main();
+  FILE *fp = fopen("output.ppm", "wb");
+  ppm_output(frame_buffer, 512, 512, fp);
+  fclose(fp);
+  free(frame_buffer);
   return 0;
 }

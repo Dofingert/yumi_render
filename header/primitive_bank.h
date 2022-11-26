@@ -4,9 +4,6 @@
 
 #ifndef SOFTWARE_RASTERIZER_HEADER_PRIMITIVE_BANK_H_
 #define SOFTWARE_RASTERIZER_HEADER_PRIMITIVE_BANK_H_
-
-#define PRIMITIVE_FIFO_SIZE 64
-
 #include "render_type.h"
 #include "sync_fifo.h"
 
@@ -25,5 +22,7 @@ struct Primitive {
 }; // 22 Word= 88 bytes
 
 typedef SyncFifo<Primitive, (PRIMITIVE_FIFO_SIZE)> PrimitiveFifo;
+void primitive_assembler_controller(int bank_id, int primitive_num, PrimitiveInput *input_ptr);
+void primitive_dispatcher_controller();
 
 #endif //SOFTWARE_RASTERIZER_HEADER_PRIMITIVE_BANK_H_

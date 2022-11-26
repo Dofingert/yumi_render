@@ -6,10 +6,10 @@
 extern int screen_size_w; // main render
 extern int screen_size_h;
 extern uint32_t *frame_buffer; // Frame buffer
-extern bool d_flag;
+extern uint16_t *tex;
+bool d_flag;
 uint16_t *depth_buffer;
 PixelShaderWarpFifo pixel_shader_fifo[PIXEL_SHADER_BANK_W_N][PIXEL_SHADER_BANK_H_N];
-extern uint16_t *tex;
 
 void simple_pixel_shader(const PixelShaderWarp &info) {
   for (int dx = 0; dx < PIXEL_SHADER_W; dx++) {
@@ -31,7 +31,7 @@ void simple_pixel_shader(const PixelShaderWarp &info) {
 }
 
 
-void primitive_dispatcher_controller(PixelShaderWarpFifo& fifo) {
+void pixel_shader_controller(PixelShaderWarpFifo& fifo) {
   PixelShaderWarp handling_warp;
   while (true) {
 	int ret = fifo.pop(&handling_warp);
