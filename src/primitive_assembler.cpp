@@ -5,7 +5,7 @@
 #include "../header/primitive_bank.h"
 #include "../header/vertex_bank.h"
 
-extern PrimitiveFifo primitive_fifo;
+PrimitiveFifo primitive_fifo;
 extern VertexBank vertex_bank[2];
 
 bool primitive_assembler(const VertexBank &bank, PrimitiveInput input, Primitive *output) {

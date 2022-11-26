@@ -16,7 +16,7 @@ struct flag_t {
 };
 
 struct VertexSlot {
-  vec3f pos;
+  vec4f pos;
   vec3f normal;
   vec2s uv;
   flag_t vertex_flag;

@@ -18,7 +18,7 @@ struct PrimitiveInput {
 };
 
 struct Primitive {
-  vec3f pos[3];
+  vec4f pos[3];
   vec3f normal[3];
   vec2s uv[3];
   unsigned int special_flag; // Used for set primitive_color directly without uv.
