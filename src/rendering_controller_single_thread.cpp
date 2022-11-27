@@ -64,10 +64,14 @@ int single_thread_render_main() {
   frame_buffer = (uint32_t *)calloc(4, screen_size_w * screen_size_h);
   depth_buffer = (uint16_t *)calloc(2, screen_size_w * screen_size_h);
   VertexSlot test_vertex[4];
-  test_vertex[0].pos << -1, 3, 0, 1;
-  test_vertex[1].pos << -1, 10, 3, 1;
+  test_vertex[0].pos << -1, 4, 0, 1;
+  test_vertex[1].pos << -1, 3, 3, 1;
   test_vertex[2].pos << 2, 3, 0, 1;
-  test_vertex[3].pos << 2, 3, 3, 1;
+  test_vertex[3].pos << 2, 2, 3, 1;
+  test_vertex[0].uv << 0, 0;
+  test_vertex[1].uv << 0, 65535;
+  test_vertex[2].uv << 65535, 0;
+  test_vertex[3].uv << 65535, 65535;
   test_vertex[0].vertex_flag = {0, 0, 65535};
   test_vertex[1].vertex_flag = {0, 0, 65535};
   test_vertex[2].vertex_flag = {0, 0, 65535};
@@ -75,7 +79,9 @@ int single_thread_render_main() {
   PrimitiveInput test_primitive[2] = {{0, 1, 2, 0xff}, {1, 2, 3, 0xff}};
 
   // set V and P matrix.
-  V = lookat(vec3f{0, 0, 2}, vec3f{0, 1, 2}, vec3f{0, 0, 1});;
+  V = lookat(vec3f{-1, -1, 8}, vec3f{test_vertex[0].pos[0] + test_vertex[3].pos[0],
+									test_vertex[0].pos[1] + test_vertex[3].pos[1],
+									test_vertex[0].pos[2] + test_vertex[3].pos[2]} / 2, vec3f{0, 0, 1});;
   P = get_p(1, 1, 10, 0.4);
   // set M matrix.
   MVP[0][0][0] = P * V;
