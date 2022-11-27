@@ -34,7 +34,6 @@ void test_fixpoint() {
 int main() {
 //  test_eigen();
 //  test_fixpoint();
-  frame_buffer = (uint32_t *)calloc(1, 512 * 512 * 4);
   single_thread_render_main();
   FILE *fp = fopen("output.ppm", "wb");
   ppm_output(frame_buffer, 512, 512, fp);

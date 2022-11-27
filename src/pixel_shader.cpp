@@ -22,7 +22,9 @@ void simple_pixel_shader(const PixelShaderWarp &info) {
 	  }
 	  if ((info.depth[dy][dx] >> 1) < (d & 0x7fff)) {
 		// draw a pixel.
-		frame_buffer[info.fb_ptr + dx + dy * screen_size_w] = 0xffffffff; // Pure white.
+		frame_buffer[info.fb_ptr + dx + dy * screen_size_w] =
+//			0x66cfcf;
+			(info.tex[dy][dx] == 0xffff) ? 0x66cfcf : 0xffffffff; // Pure white.
 		// update z-buffer;
 		depth_buffer[info.fb_ptr + dx + dy * screen_size_w] = (info.depth[dy][dx] >> 1) | (d_flag << 15);
 	  }
@@ -30,8 +32,7 @@ void simple_pixel_shader(const PixelShaderWarp &info) {
   }
 }
 
-
-void pixel_shader_controller(PixelShaderWarpFifo& fifo) {
+void pixel_shader_controller(PixelShaderWarpFifo &fifo) {
   PixelShaderWarp handling_warp;
   while (true) {
 	int ret = fifo.pop(&handling_warp);

@@ -12,7 +12,7 @@
 #define PIXEL_SHADER_BANK_W_N (1)
 #define PIXEL_SHADER_BANK_H_N (4)
 
-#define PIXEL_SHADER_FIFO_SIZE (128)
+#define PIXEL_SHADER_FIFO_SIZE (65536)
 
 struct PixelShaderWarp {
   unsigned int fb_ptr;
