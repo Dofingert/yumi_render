@@ -41,13 +41,13 @@ class SyncFifo {
   int pop(T *target_buf) {
 	std::unique_lock<std::mutex> modify_lock(modify);
 	unsigned int size = fifo_end - fifo_head;
-	while (size <= 0) {
+	while (size <= 0 && !is_killed) {
 	  cond_consumer.wait(modify_lock);
 	  size = fifo_end - fifo_head;
-	  if (size == 0 && is_killed) {
-		return -1;
-	  }
 	}
+    if(size == 0 && is_killed) {
+        return -1;
+    }
 	unsigned int new_fifo_head = fifo_head + 1;
 	unsigned int read_fifo_ptr = fifo_head % (FIFO_SIZE);
 	*target_buf = slot[read_fifo_ptr];

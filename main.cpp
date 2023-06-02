@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <iostream>
-#include <sg14/fixed_point>
+//#include <sg14/fixed_point>
 #include "header/render_type.h"
 #include "header/utils.h"
 

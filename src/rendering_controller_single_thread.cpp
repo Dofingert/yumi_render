@@ -79,16 +79,16 @@ int single_thread_render_main() {
   PrimitiveInput test_primitive[2] = {{0, 1, 2, 0xff}, {1, 2, 3, 0xff}};
 
   // set V and P matrix.
-  V = lookat(vec3f{-1, -1, 8}, vec3f{test_vertex[0].pos[0] + test_vertex[3].pos[0],
+  V = lookat(vec3f{-1, -2, 3}, vec3f{test_vertex[0].pos[0] + test_vertex[3].pos[0],
 									test_vertex[0].pos[1] + test_vertex[3].pos[1],
 									test_vertex[0].pos[2] + test_vertex[3].pos[2]} / 2, vec3f{0, 0, 1});;
   P = get_p(1, 1, 10, 0.4);
   // set M matrix.
   MVP[0][0][0] = P * V;
   MVP[0][0][1] = V;
-  std::cout << P * V * test_vertex[0].pos << std::endl;
-  std::cout << P * V * test_vertex[1].pos << std::endl;
-  std::cout << P * V * test_vertex[2].pos << std::endl;
+//  std::cout << P * V * test_vertex[0].pos << std::endl;
+//  std::cout << P * V * test_vertex[1].pos << std::endl;
+//  std::cout << P * V * test_vertex[2].pos << std::endl;
   /*Test screen end*/
   // start vertex_transform.
   vertex_transform_controller(0, 4, test_vertex);

@@ -6,12 +6,18 @@
 #define SOFTWARE_RASTERIZER_HEADER_RENDER_TYPE_H_
 
 #include <Eigen/Dense>
-#include <sg14/fixed_point>
+//#include <sg14/fixed_point>
 
-typedef sg14::fixed_point<short, -4> fixed_s11f4;
-typedef sg14::fixed_point<short, -11> fixed_s4f11;
-typedef sg14::fixed_point<int,   -21> fixed_s10f21;
-typedef sg14::fixed_point<short, -15> fixed_s0f15;
+//typedef sg14::fixed_point<short, -4> fixed_s11f4;
+//typedef sg14::fixed_point<short, -11> fixed_s4f11;
+//typedef sg14::fixed_point<int,   -21> fixed_s10f21;
+//typedef sg14::fixed_point<short, -15> fixed_s0f15;
+
+typedef float fixed_s11f4;
+typedef float fixed_s4f11;
+typedef float fixed_s10f21;
+typedef float fixed_s0f15;
+
 
 typedef Eigen::Matrix<float, 4, 4> matrix44f;
 typedef Eigen::Matrix<float, 2, 2> matrix22f; // triangle matrix
