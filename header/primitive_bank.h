@@ -10,7 +10,7 @@
 #define PRIMITIVE_FIFO_SIZE (128)
 
 struct PrimitiveInput {
-  unsigned char index[3]; // Sub-index, just used to index in vertex_bank
+  unsigned int index[3]; // Sub-index, just used to index in vertex_bank
   unsigned char flag;     // reserve for further usage.
 };
 
